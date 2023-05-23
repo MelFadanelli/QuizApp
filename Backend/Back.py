@@ -17,7 +17,7 @@ client = MongoClient() # Crea una instancia de cliente para MongoDB
 mongouri = "mongodb://" + urllib.parse.quote_plus(sys.argv[1]) + ":"\
         + urllib.parse.quote_plus(sys.argv[2]) + "@127.0.0.1:27017/"
 client = MongoClient(mongouri) # Creamos conexion
-db = client['database'] # Reemplaza database por el nombre de la base de datos
+db = client['QuizzApp'] # Reemplaza database por el nombre de la base de datos
 
 # Index route and most basic example
 @app.route('/', methods=['GET'])
