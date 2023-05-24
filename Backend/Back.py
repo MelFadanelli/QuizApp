@@ -3,6 +3,7 @@ from flask_cors import CORS
 from pymongo import MongoClient # Para conectarse a MongoDB
 from bson import json_util # Para darle formato al query
 from bson.json_util import dumps # Para darle formato al query
+from bson.objectid import ObjectId
 import json
 import urllib
 import os
@@ -22,16 +23,17 @@ db = client['QuizzApp'] # Reemplaza database por el nombre de la base de datos
 # Index route and most basic example
 @app.route('/', methods=['GET'])
 def index():
-    data = db.test.find() # Se hace el query find, cambia test por la coleccion
+    data = db.QuizzAppQA.find() # Se hace el query find, cambia test por la coleccion
     data = json.loads(json_util.dumps(data)) # Se le da formato en diccionario
-    return jsonify({"Status": "Online!"})
+    for i in data:
+        i["_id"] = str(i["_id"]["$oid"])
+    return data
 
-# Custom route with return values in JSON
-@app.route('/ninjas', methods=['GET'])
-def values():
-    
-    names = ["Naruto", "Sasuke", "Sakura", "Kakashi"]
-    
-    return jsonify({"Shinobis": names})
+if __name__ == '__main__':
+    from waitress import serve
+    # For local testing
+    app.run(use_reloader=True, port=3001, threaded=True)
+    # For deployment
+    #tl.start()
+    #serve(app, host="0.0.0.0", port=3001, url_scheme='https')
 
-# Post request example
