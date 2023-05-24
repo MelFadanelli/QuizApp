@@ -1,20 +1,46 @@
 import React, { useState, useEffect } from "react";
+import questionsData from '../components/Dataquestions'
+import '../styless/card.css'
 
 const Preguntas=()=>{
-    const [question, setQuestion] = useState("Example"); // Placeholder for question
-    const [answers, setAnswers] = useState(["Answer1", "Answer2", "Answer3"]);
-    const [correctans, setCorrectans]= useState("correct");
-    return(
-    <div>
-    <h1>Preguntas</h1>
-    <h2>Pregunta</h2>
-        <p>{question}</p>
-        <form>
-            <input type="radio" value ={correctans}></input>
-            <label>{correctans} </label>
-        </form>
+    const [question, setQuestion] = useState(""); // Placeholder for question
+    const [answers, setAnswers] = useState([]);
+    const [correctAnswer, setCorrectAnswer]= useState("");
 
-    </div>
+    useEffect(() => {
+   
+        setQuestion(questionsData[0].question);
+        setAnswers([...questionsData[0].wrongAnswers, questionsData[0].answer]);
+        setCorrectAnswer(questionsData[0].answer);
+      }, []);
+
+
+
+    return(
+        <>
+        <div className="card">
+            <div >
+        <h1>Questions</h1>
+        <h2>{question}</h2>
+        <form>
+          {answers.map((answer, index) => (
+            <div key={index}>
+              <input
+                type="radio"
+                value={answer}
+                checked={answer === correctAnswer}
+                onChange={(e) => setCorrectAnswer(e.target.value)}
+              />
+              <label>{answer}</label>
+            </div>
+          ))}
+        </form>
+        
+      </div>
+      
+      </div>
+      <button className="btn">Next</button>
+      </>
     );
 }
 export default Preguntas;
