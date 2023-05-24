@@ -78,7 +78,7 @@ const Preguntas=()=>{
       
       </div>
       <button className="btn" onClick={handlesubmit}>Next</button>
-      <button className="btn" onClick={handIndexa}>GATO PELON</button>
+      <button className="btn" onClick={handIndexa}>GATO </button>
       </>
     );
 }

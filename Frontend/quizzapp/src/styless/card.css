@@ -44,7 +44,32 @@ h1{
     color:black;
 }
  body{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     font-family: 'Source Code Pro', monospace;
-    color: #fff;
+    color: #d3deff;
+ }
+
+ .input{
+    font-size: 30px;
+    background: rgba(0, 0, 0, 0.0) ;
+    color:#fff;
+    border: 1px solid #ffffff;
+    border-radius: 9px;
+    
+ }
+ .start{
+    margin: 10px;
+     margin: 0 auto;
+     display: flex;
+     margin-top: 10px;
+    background: rgba(0, 0, 0, 0.0);
+    border: 1px solid #ffffff;
+    border-radius: 9px;
+    color:#ffffff;
+
+     font-size: 40px;
+ }
+ .start:hover{
+    background-color: #fff;
+    color: black;
  }
