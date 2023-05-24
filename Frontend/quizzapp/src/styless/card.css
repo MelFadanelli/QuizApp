@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 5%;
     color: aliceblue;
     
  }
@@ -46,4 +46,5 @@ h1{
  body{
     background-color: black;
     font-family: 'Source Code Pro', monospace;
+    color: #fff;
  }
