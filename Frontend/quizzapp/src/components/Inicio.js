@@ -25,6 +25,11 @@ const Inicio=()=>
         setUser(e.target.value)
         console.log(user)
        
+      };
+
+      const toLeaderboard = (event) => {
+        event.preventDefault();
+        navigate("/Leaderboard")
       }
 
     return(
@@ -38,6 +43,9 @@ const Inicio=()=>
     <button type="submit"className="start">start</button>
     </div>
     </form>
+</div>
+<div>
+  <button className="start" onClick={toLeaderboard}>leaderboard</button>
 </div>
 </>
 )}

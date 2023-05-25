@@ -60,7 +60,6 @@ const questionData =
         "answer": "Pacific Ocean",
         "wrongAnswers": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean"]
       },
-
     {
       id: 11,
       question: "Who is the author of the Harry Potter book series?",
@@ -137,6 +136,7 @@ const questionData =
       answer: "Harper Lee"
     }
 
+  
 
 ]
 
