@@ -32,7 +32,11 @@ const Preguntas=()=>{
      const handlesubmit=()=>{
         if (selectedAnswer === correctAnswer) {
             setCorrectAnswersCount((prevCount) => prevCount + 1);
+            alert(`"correct! :D" `);
+
            
+      }else{
+        alert(`"incorrect! correct answer was: " ${correctAnswer}`);
       }
       if (indexa+1 === questionsData.length) {
         alert(`Your final score is ${correctAnswersCount}`);
