@@ -45,7 +45,7 @@ const Inicio=()=>
     </form>
 </div>
 <div>
-  <button className="boaard" onClick={toLeaderboard}>leaderboard</button>
+  <button className="start" onClick={toLeaderboard}>leaderboard</button>
 </div>
 </>
 )}
