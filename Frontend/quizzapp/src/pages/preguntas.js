@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import questionsData from '../components/Dataquestions'
 import '../styless/card.css'
+import Inicio from "../components/Inicio";
 
 const Preguntas=()=>{
     const [question, setQuestion] = useState(""); // Placeholder for question
@@ -40,6 +41,7 @@ const Preguntas=()=>{
       }
       if (indexa+1 === questionsData.length) {
         alert(`Your final score is ${correctAnswersCount}`);
+
       }else{
         setIndexa((prevCount)=>prevCount+1);
         console.log(correctAnswersCount, indexa)
@@ -48,6 +50,14 @@ const Preguntas=()=>{
       
     }
 
+    const handleSendAns=()=>{
+
+    }
+
+    const handleResart=()=>{
+      setCorrectAnswersCount(0)
+      setIndexa(0)
+    }
 
 
 
@@ -82,7 +92,7 @@ const Preguntas=()=>{
       
       </div>
       <button className="btn" onClick={handlesubmit}>Next</button>
-      <button className="btn" onClick={handIndexa}>GATO </button>
+      <button className="btn" onClick={handleResart}>Restart </button>
       </>
     );
 }
