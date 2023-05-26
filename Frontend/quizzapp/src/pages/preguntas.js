@@ -61,9 +61,7 @@ const Preguntas=()=>{
         setSelectedAnswer(e.target.value);
       };
 
-      const handIndexa=()=>{
-        console.log("AQUIIII ESTAA", indexa)
-      }
+    
 
 
 
@@ -96,7 +94,7 @@ const Preguntas=()=>{
     const handleSendAns=()=>{
       
     }
-
+//restart quizz
     const handleResart=()=>{
       setCorrectAnswersCount(0)
       setIndexa(0)
