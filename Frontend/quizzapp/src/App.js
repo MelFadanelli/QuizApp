@@ -19,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio setUser={setUser} />} />
           <Route path="/Quizz" element={<Preguntas />} />
+          <Route path="/Leaderboard" element={<Leaderboard/>}></Route>
+
         </Routes>
       </UserContext.Provider>
 
