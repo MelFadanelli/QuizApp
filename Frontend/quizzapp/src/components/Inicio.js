@@ -23,11 +23,8 @@ const Inicio=({setUser})=>
         navigate("/Quizz");
         
       };
-      const handleChange=(e)=>{
-        
+      const handleChange=(e)=>{ 
         setUserInput(e.target.value)
-        
-       
       };
 
       const toLeaderboard = (event) => {
@@ -35,14 +32,29 @@ const Inicio=({setUser})=>
         navigate("/Leaderboard")
       }
 
+      const options = Array(15).fill().map((_, i) => i+1);
+      const [selectedOption, setSelectedOption] = useState(options[0].value);
+
     return(
       
 <>
 <div className="card">
     <form onSubmit={handleSubmit}>
-    <label>Usuario: </label>
-    
-    <input value={userInput} type="text" placeholder="Username" className="input" onChange={handleChange}></input>
+      <div>
+        <label>Usuario: </label> 
+        <input value={userInput} type="text" placeholder="Username" className="input" onChange={handleChange}></input>
+      </div>
+      <div>
+        <label>Select # of questions</label> 
+        <select
+        style={{height: 50, width: 80, fontSize:25, margin:10}}
+        value={selectedOption}
+        onChange={e => setSelectedOption(e.target.value)}>
+        {options.map(o => (
+          <option style={{fontSize:25}} key={o} value={o}>{o}</option>
+        ))}
+        </select>
+      </div>
     <div>
     <button type="submit"className="start">start</button>
     </div>
