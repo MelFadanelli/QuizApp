@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Preguntas from './pages/preguntas';
 import Inicio from './components/Inicio.js';
@@ -10,12 +9,9 @@ function App() {
     <div className="App">
       <Routes>
       <Route path="/" element={<Inicio/>}></Route>
-      <Route path="/Quizz" element={<Preguntas/>}></Route>
+      <Route path='/Quizz/:numQuestions' element={<Preguntas/>}></Route>
       <Route path="/Leaderboard" element={<Leaderboard/>}></Route>
-
       </Routes>
-     
-      
     </div>
   );
 }

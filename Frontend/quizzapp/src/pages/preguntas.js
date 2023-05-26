@@ -9,36 +9,34 @@ const Preguntas=()=>{
     const [correctAnswer, setCorrectAnswer]= useState("");
     const [selectedAnswer, setSelectedAnswer] = useState("");
     const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
-   const [indexa, setIndexa]=useState(0);
+    const [indexa, setIndexa]=useState(0);
 
     useEffect(() => {  
         setQuestion(questionsData[indexa].question);
         setAnswers([...questionsData[indexa].wrongAnswers, questionsData[indexa].answer]);
         setCorrectAnswer(questionsData[indexa].answer);
         //setIndexa(questionsData[0].id);
-      }, [indexa]);
+    }, [indexa]);
 
-      const handleAnswerChange = (e) => {
-        setSelectedAnswer(e.target.value);
-      };
+    const handleAnswerChange = (e) => {
+      setSelectedAnswer(e.target.value);
+    };
 
-      const handIndexa=()=>{
-        console.log("AQUIIII ESTAA", indexa)
-      }
+    const numQuestions = useParams();
+    console.log(Number(Object.values(numQuestions)))
 
+    const handIndexa=()=>{
+      console.log("AQUIIII ESTAA", indexa)
+    }
 
-
-
-     const handlesubmit=()=>{
+    const handlesubmit=()=>{
         if (selectedAnswer === correctAnswer) {
             setCorrectAnswersCount((prevCount) => prevCount + 1);
             alert(`"correct! :D" `);
-
-           
       }else{
         alert(`"incorrect! correct answer was: " ${correctAnswer}`);
       }
-      if (indexa+1 === questionsData.length) {
+      if (indexa+1 === Number(Object.values(numQuestions))) {
         alert(`Your final score is ${correctAnswersCount}`);
       }else{
         setIndexa((prevCount)=>prevCount+1);
@@ -47,12 +45,6 @@ const Preguntas=()=>{
 
       
     }
-
-
-
-
-
-
 
     return(
         <>
@@ -73,8 +65,7 @@ const Preguntas=()=>{
               />
               <label>{answer}</label>
             </div>
-          ))}
-       
+          ))}     
         </form>
         <p>num question: {indexa+1}</p>
         
