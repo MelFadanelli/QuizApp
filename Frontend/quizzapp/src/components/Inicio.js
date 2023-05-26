@@ -29,6 +29,11 @@ const Inicio=({setUser})=>
         setUserInput(e.target.value)
         
        
+      };
+
+      const toLeaderboard = (event) => {
+        event.preventDefault();
+        navigate("/Leaderboard")
       }
 
     return(
@@ -45,7 +50,9 @@ const Inicio=({setUser})=>
     </form>
 </div>
 
-
+<div>
+  <button className="start" onClick={toLeaderboard}>leaderboard</button>
+</div>
 
 </>
 )}

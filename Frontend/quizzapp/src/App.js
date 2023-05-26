@@ -5,12 +5,15 @@ import Inicio from './components/Inicio.js';
 import { Routes , Route} from 'react-router-dom';
 import UserContext from './components/usercontext';
 import React, { useState } from 'react';
+import Leaderboard from './pages/Leaderboard';
+
 
 function App() {
 
   const [user, setUser] = useState("");
   return (
     <div className="App">
+
     
     <UserContext.Provider value={user}>
         <Routes>
@@ -18,6 +21,7 @@ function App() {
           <Route path="/Quizz" element={<Preguntas />} />
         </Routes>
       </UserContext.Provider>
+
      
       
     </div>
