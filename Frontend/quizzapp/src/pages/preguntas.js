@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import questionsData from '../components/Dataquestions'
 import '../styless/card.css'
 import Inicio from "../components/Inicio";
 import { useSearchParams } from "react-router-dom";
@@ -8,6 +7,7 @@ import UserContext from "../components/usercontext";
 
 const Preguntas=()=>{
     const [question, setQuestion] = useState(""); // Placeholder for question
+    const [questionsData, setQuestionsData]=useState("")
     const [answers, setAnswers] = useState([]);
     const [Answer, setAnswer] = useState("");
     const [correctAnswer, setCorrectAnswer]= useState("");
@@ -30,15 +30,31 @@ const Preguntas=()=>{
 
     }
 
-
+    
    
 
-    useEffect(() => {  
-        setQuestion(questionsData[indexa].question);
-        setAnswers([...questionsData[indexa].wrongAnswers, questionsData[indexa].answer]);
-        setCorrectAnswer(questionsData[indexa].answer);
-        //setIndexa(questionsData[0].id);
-      }, [indexa]);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("https://api.askyquizzy.me/");
+          const data = await response.json();
+          const { question, answer, wrongAnswers } = data[indexa];
+          setQuestionsData(data);
+          setQuestion(question);
+          setAnswers([...wrongAnswers, answer]);
+          setCorrectAnswer(answer);
+        } catch (error) {
+          console.log("Error fetching quiz data:", error);
+        }
+      };
+  
+      fetchData();
+    }, [indexa]);
+  
+
+
+
+   
 
 
       const handleAnswerChange = (e) => {
