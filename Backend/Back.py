@@ -4,6 +4,7 @@ from pymongo import MongoClient # Para conectarse a MongoDB
 from bson import json_util # Para darle formato al query
 from bson.json_util import dumps # Para darle formato al query
 from bson.objectid import ObjectId
+import random
 import json
 import urllib
 import os
