@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import questionsData from '../components/Dataquestions'
 import '../styless/card.css'
+import useParams from 'react-router-dom'
 
 const Preguntas=()=>{
     const [question, setQuestion] = useState(""); // Placeholder for question
