@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from "react";
-import questionsData from './Dataquestions'
 import { Form, Navigate } from "react-router-dom";
 import '../styless/card.css'
 import { withRouter, useNavigate } from "react-router-dom";
@@ -12,7 +11,7 @@ const Inicio=({setUser})=>
   //const [user, setUser]=useState("")
   const [userInput, setUserInput] = useState("");
     
-    const currentDate = new Date().toLocaleString();
+
 
     const navigate = useNavigate();
     const handleSubmit = (event) => {
