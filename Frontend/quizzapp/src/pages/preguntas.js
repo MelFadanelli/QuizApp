@@ -18,6 +18,7 @@ const Preguntas=()=>{
     const currentDate = new Date().toLocaleString();
 
 
+
     //Makes json to send
     const sendPoints=()=>{
       const data={
@@ -36,7 +37,15 @@ const Preguntas=()=>{
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`https://api.askyquizzy.me/${questions}`);
+          const response = await fetch(`https://api.askyquizzy.me/questions`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              "questions": 5 //questions
+            })
+          });
           const data = await response.json();
           const { question, answer, wrongAnswers } = data[indexa];
           setQuestionsData(data);
@@ -47,12 +56,9 @@ const Preguntas=()=>{
           console.log("Error fetching quiz data:", error);
         }
       };
-  
+    
       fetchData();
     }, [indexa]);
-  
-
-
 
    
 

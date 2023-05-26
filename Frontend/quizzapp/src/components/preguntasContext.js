@@ -1,5 +1,5 @@
 import React from 'react';
 
-const PreguntasContext=React.PreguntasContext();
+const PreguntasContext=React.createContext();
 
-export default PreguntasContext();
+export default PreguntasContext;
