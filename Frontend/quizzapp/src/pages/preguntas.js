@@ -36,7 +36,7 @@ const Preguntas=()=>{
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("https://api.askyquizzy.me/");
+          const response = await fetch(`https://api.askyquizzy.me/${questions}`);
           const data = await response.json();
           const { question, answer, wrongAnswers } = data[indexa];
           setQuestionsData(data);

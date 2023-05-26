@@ -6,7 +6,7 @@ import { withRouter, useNavigate } from "react-router-dom";
 import UserContext from "./usercontext";
 
 
-const Inicio=({setUser})=>
+const Inicio=({setUser},{setPreguntas})=>
 {
   //const [user, setUser]=useState("")
   const [userInput, setUserInput] = useState("");
