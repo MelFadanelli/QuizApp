@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import questionsData from '../components/Dataquestions'
 import '../styless/card.css'
 import Inicio from "../components/Inicio";
+import { useSearchParams } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../components/usercontext";
 
 const Preguntas=()=>{
     const [question, setQuestion] = useState(""); // Placeholder for question
@@ -10,7 +13,25 @@ const Preguntas=()=>{
     const [correctAnswer, setCorrectAnswer]= useState("");
     const [selectedAnswer, setSelectedAnswer] = useState("");
     const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
-   const [indexa, setIndexa]=useState(0);
+    const [indexa, setIndexa]=useState(0);
+    const user= useContext(UserContext);
+    const currentDate = new Date().toLocaleString();
+
+
+    //Makes json to send
+    const sendPoints=()=>{
+      const data={
+        user,
+        currentDate,
+        correctAnswersCount
+      }
+      const jsonData= JSON.stringify(data);
+      console.log(jsonData)
+
+    }
+
+
+   
 
     useEffect(() => {  
         setQuestion(questionsData[indexa].question);
@@ -18,6 +39,7 @@ const Preguntas=()=>{
         setCorrectAnswer(questionsData[indexa].answer);
         //setIndexa(questionsData[0].id);
       }, [indexa]);
+
 
       const handleAnswerChange = (e) => {
         setSelectedAnswer(e.target.value);
@@ -34,6 +56,7 @@ const Preguntas=()=>{
         if (selectedAnswer === correctAnswer) {
             setCorrectAnswersCount((prevCount) => prevCount + 1);
             alert(`"correct! :D" `);
+            
 
            
       }else{
@@ -41,22 +64,27 @@ const Preguntas=()=>{
       }
       if (indexa+1 === questionsData.length) {
         alert(`Your final score is ${correctAnswersCount}`);
+        sendPoints();
 
       }else{
         setIndexa((prevCount)=>prevCount+1);
         console.log(correctAnswersCount, indexa)
+        //Console.log(user)
+        sendPoints();
+
       }
 
       
     }
 
     const handleSendAns=()=>{
-
+      
     }
 
     const handleResart=()=>{
       setCorrectAnswersCount(0)
       setIndexa(0)
+      
     }
 
 
