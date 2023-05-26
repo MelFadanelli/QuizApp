@@ -21,13 +21,32 @@ client = MongoClient(mongouri) # Creamos conexion
 db = client['QuizzApp'] # Reemplaza database por el nombre de la base de datos
 
 # Index route and most basic example
-@app.route('/', methods=['GET'])
-def index():
+@app.route('/questions', methods=['POST'])
+def questions():
+    req = request.get_json()
+    no_questions = req["questions"]
     data = db.QuizzAppQA.find() # Se hace el query find, cambia test por la coleccion
     data = json.loads(json_util.dumps(data)) # Se le da formato en diccionario
     for i in data:
         i["_id"] = str(i["_id"]["$oid"])
+    new_questions = data[:]
+    random.shuffle(new_questions)
+    sliced_questions = new_questions[:no_questions]
+    return sliced_questions
+
+@app.route('/leaderboard', methods=['GET'])
+def leaderboard():
+    data = db.QuizzAppLeaderboard.find()
+    data = json.loads(json_util.dumps(data))
+    for i in data:
+        i["_id"] = str(i["_id"]["$oid"])
     return data
+
+@app.route('/set_score', methods=['POST'])
+def set_score():
+    data = request.get_json()
+    db.QuizzAppLeaderboard.insert_one(data)
+    return "Score added"
 
 if __name__ == '__main__':
     from waitress import serve
