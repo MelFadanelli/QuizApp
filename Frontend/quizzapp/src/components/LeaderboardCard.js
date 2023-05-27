@@ -18,7 +18,7 @@ function Item(data) {
                     <div className="main"  key={index}>
                         <div className="info">
                             <h3>{value.name}</h3>
-                            <span>{value.score}</span>
+                            <span>Score:{value.score}</span>
                         </div>
                         <div className="fecha">
                             <span>{value.date}</span>

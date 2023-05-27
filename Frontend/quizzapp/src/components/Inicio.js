@@ -13,47 +13,43 @@ const Inicio=({setUser},{setPreguntas})=>
     
 
 
-    const navigate = useNavigate();
-    const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
         
         
-        event.preventDefault(); // Prevent the default form submission behavior
-        setUser(userInput)
-        // Redirect to the Quizz component
-        navigate("/Quizz");
+    event.preventDefault(); // Prevent the default form submission behavior
+    setUser(userInput)
+    // Redirect to the Quizz component
+    navigate("/Quizz");
         
-      };
-      const handleChange=(e)=>{
+  };
+  const handleChange=(e)=>{
         
-        setUserInput(e.target.value)
+    setUserInput(e.target.value)
         
        
-      };
+  };
 
-      const toLeaderboard = (event) => {
-        event.preventDefault();
-        navigate("/Leaderboard")
-      }
+  const toLeaderboard = (event) => {
+    event.preventDefault();
+    navigate("/Leaderboard")
+  }
 
-    return(
-      
-<>
-<div className="card">
-    <form onSubmit={handleSubmit}>
-    <label>Usuario: </label>
-    
-    <input value={userInput} type="text" placeholder="Username" className="input" onChange={handleChange}></input>
-    <div>
-    <button type="submit"className="start">start</button>
-    </div>
-    </form>
-</div>
-
-<div>
-  <button className="start" onClick={toLeaderboard}>leaderboard</button>
-</div>
-
-</>
-)}
+  return( 
+    <>
+      <div className="card">
+        <form onSubmit={handleSubmit}>
+          <label>Usuario: </label> 
+          <input value={userInput} type="text" placeholder="Username" className="input" onChange={handleChange}></input>
+          <div>
+            <button type="submit"className="start">start</button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <button className="start" onClick={toLeaderboard}>leaderboard</button>
+      </div>
+    </>
+  )}
 
 export default Inicio;
