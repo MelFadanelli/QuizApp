@@ -4,6 +4,7 @@ import Inicio from "../components/Inicio";
 import { useSearchParams } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../components/usercontext";
+import PreguntasContext from "../components/preguntasContext";
 
 const Preguntas=()=>{
     const [question, setQuestion] = useState(""); // Placeholder for question
@@ -14,8 +15,10 @@ const Preguntas=()=>{
     const [selectedAnswer, setSelectedAnswer] = useState("");
     const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
     const [indexa, setIndexa]=useState(0);
+    const preguntas= useContext(PreguntasContext);
     const user= useContext(UserContext);
     const currentDate = new Date().toLocaleString();
+
 
 
     //Makes json to send
@@ -36,7 +39,15 @@ const Preguntas=()=>{
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("https://api.askyquizzy.me/");
+          const response = await fetch(`https://api.askyquizzy.me/questions`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              "questions":  preguntas// 5questions
+            })
+          });
           const data = await response.json();
           const { question, answer, wrongAnswers } = data[indexa];
           setQuestionsData(data);
@@ -47,12 +58,9 @@ const Preguntas=()=>{
           console.log("Error fetching quiz data:", error);
         }
       };
-  
+    
       fetchData();
     }, [indexa]);
-  
-
-
 
    
 
