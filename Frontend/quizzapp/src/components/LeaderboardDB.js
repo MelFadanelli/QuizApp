@@ -1,3 +1,16 @@
+
+const LeaderboardData=()=>{
+
+
+
+
+
+
+
+
+}
+
+
 export const LeaderboardDB = [
     {
         name:"Luisa Martinez",
