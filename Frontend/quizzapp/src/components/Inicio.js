@@ -10,7 +10,7 @@ const Inicio=({setUser, setPreguntas})=>
 {
   //const [user, setUser]=useState("")
   const [userInput, setUserInput] = useState("");
-  const[preguntasInput, setPreguntasInput]=useState(0);
+  const[preguntasInput, setPreguntasInput]=useState(1);
     
     const navigate = useNavigate();
     const handleSubmit = (event) => {
