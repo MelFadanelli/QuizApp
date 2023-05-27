@@ -13,7 +13,6 @@ function Leaderboard() {
     try {
       const response = await fetch("https://api.askyquizzy.me/leaderboard");
       const data = await response.json();
-      console.log(data);
       setLeaderboardData(data);
     } catch (error) {
       console.error("Error fetching leaderboard data:", error);
