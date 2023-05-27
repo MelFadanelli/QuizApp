@@ -21,7 +21,7 @@ function App() {
       <PreguntasContext.Provider value={preguntas}>
 
         <Routes>
-          <Route path="/" element={<Inicio setUser={setUser} setPreguntas={Preguntas} />} />
+          <Route path="/" element={<Inicio setUser={setUser} setPreguntas={setPreguntas} />} />
           <Route path="/Quizz" element={<Preguntas />} />
           <Route path="/Leaderboard" element={<Leaderboard/>}></Route>
 
