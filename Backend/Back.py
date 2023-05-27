@@ -3,6 +3,7 @@ from flask_cors import CORS
 from pymongo import MongoClient # Para conectarse a MongoDB
 from bson import json_util # Para darle formato al query
 from bson.json_util import dumps # Para darle formato al query
+from operator import itemgetter
 from bson.objectid import ObjectId
 import random
 import json
@@ -41,7 +42,8 @@ def leaderboard():
     data = json.loads(json_util.dumps(data))
     for i in data:
         i["_id"] = str(i["_id"]["$oid"])
-    return data
+    sorted_data = sorted(data, key=itemgetter('score'), reverse=True)
+    return sorted_data
 
 @app.route('/set_score', methods=['POST'])
 def set_score():
