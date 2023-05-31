@@ -6,6 +6,12 @@ This is a program that allows users to take a quiz, decide what number of questi
 
 At the main menu the user will write their username and select how many questions they want to answer, if they do not wish to resolve a quiz, then they can also see the Leaderboard pressing the adequate button. After writing their name and selecting a number, then they can press the Continue button. This will take them to the next page, that will display a question and the answer options. In case of selecting the wrong answer, a feedback alert will appear, indicating to them what was the right answer. After all questions have been displayed and answered, the screen will show the score, and the Leaderboard, where they can go back to the main menu to retake the quiz.
 
+## System Diagram
+
+<img width="638" alt="diagraam" src="https://github.com/MelFadanelli/QuizApp/assets/69481052/0c9fb044-d7ca-48c3-9a90-6c0fa0de668d">
+
+Along the way, we changed the system diagram according to the decisions made, making it simpler, and more accurate to the actual process that the work follows. At first we were considering using a relational database to store the questions and the answer separately, but we realized that it wasn’t necessary. So we decided to merge those tables into a single mongodb database.
+
 ## Patterns Used
 
 The Design Pattern used can be seen as Proxy, because the client communicates through Flask with requests, that when responded is sent certain information. Because we used a MongoDb database, we thought it was the pattern that best accommodates our necessities and would be easy to understand and make the communication between frontend and backend. We chose this way because it makes our database easier to store and use when necessary. The react app is able to take the .json files and read them so the app can function. In this case, we can see the communication with Flask as a placeholder for the data displayed and saved inside the Mongo database. 
